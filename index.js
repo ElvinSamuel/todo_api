@@ -2,11 +2,14 @@ var express = require('express'),
     app     = express(),
     /* Adding in the Port */
     port    = process.env.PORT || 3000;
+    
+// ====================================
+var todoRoutes = require('./routes/todos');
 
+app.use('/api/todos', todoRoutes);
+// ===================================
 app.get('/', function(req, res){
-    res.json({
-        message: "Does this work?"
-    });
+    res.send('Hello From Root Route!');
 });
 
 app.listen(port, function(){
