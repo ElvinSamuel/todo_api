@@ -1,13 +1,17 @@
-var express = require('express'),
-    app     = express(),
+var express    = require('express'),
+    app        = express(),
     /* Adding in the Port */
-    port    = process.env.PORT || 3000;
-    
-// ====================================
+    port       = process.env.PORT || 3000,
+    bodyParser = require('body-parser');
+
+// MongoDb============================
 var todoRoutes = require('./routes/todos');
 
 app.use('/api/todos', todoRoutes);
-// ===================================
+// BodyParser========================
+app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended: true});
+//===================================
 app.get('/', function(req, res){
     res.send('Hello From Root Route!');
 });
