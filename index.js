@@ -6,14 +6,16 @@ var express    = require('express'),
 
 // MongoDb============================
 var todoRoutes = require('./routes/todos');
-
+// Express Static Files===============
+app.use(express.static(__dirname + '/views'));
+// Express.Router=====================
 app.use('/api/todos', todoRoutes);
-// BodyParser========================
+// BodyParser=========================
 app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended: true}));
-//===================================
+//====================================
 app.get('/', function(req, res){
-    res.sendFile('Hello From Root Route!');
+    res.sendFile('index.html');
 });
 
 // Handle Everything Else By Simply Redirecting
