@@ -13,7 +13,12 @@ app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended: true}));
 //===================================
 app.get('/', function(req, res){
-    res.send('Hello From Root Route!');
+    res.sendFile('Hello From Root Route!');
+});
+
+// Handle Everything Else By Simply Redirecting
+app.get('*', function(req, res){
+    res.redirect('/');
 });
 
 app.listen(port, function(){
