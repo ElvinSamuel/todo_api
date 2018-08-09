@@ -2,11 +2,16 @@ var express    = require('express'),
     app        = express(),
     /* Adding in the Port */
     port       = process.env.PORT || 3000,
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    seedDB     = require('./seed.js');
+
+// run the seed file for data
+seedDB();
 
 // MongoDb============================
 var todoRoutes = require('./routes/todos');
 // Express Static Files===============
+app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 // Express.Router=====================
 app.use('/api/todos', todoRoutes);
